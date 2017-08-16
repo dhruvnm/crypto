@@ -13,8 +13,8 @@ python3 crypto.py
 ## Supported Ciphers
 1. ROT47
 
-    ROT47 will take every character as ASCII and shift it's value by 47 places. Since there are 94 valid ASCII characters, an encrypted   message can be decrypted by running ROT47 a second time.
+    ROT47 will take every character as ASCII and shift its value by 47 places. Since there are 94 valid ASCII characters, an encrypted   message can be decrypted by running ROT47 a second time.
 
 2. Caesar Cipher
 
-    TODO
+    The Caesar Cipher takes every character as ASCII and shifts its value by the designated key. To decrypt, it will shift in the opposite direction. 

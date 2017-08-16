@@ -1,6 +1,6 @@
 # Copyright 2017 Dhruv Mehta
 import crypto_helper as cry
-from ciphers import rot
+from ciphers import *
 
 print("Welcome to Cryto v1.0")
 
@@ -13,5 +13,7 @@ while True:
         #Handle ROT47
         rot.rot47(my_file, direction)
 
-#    elif cipher is 2:
+    elif cipher is 2:
         #Handle Caesar Cipher
+        key = caesar.get_key()
+        caesar.caesar(my_file, direction, key)
