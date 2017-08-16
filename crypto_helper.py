@@ -6,7 +6,10 @@ from os import remove
 def exit():
     """Exit the program"""
     print("Goodbye!")
-    remove(".chain")
+    try:
+        remove(".chain")
+    except FileNotFoundError:
+        pass
     sys.exit()
 
 def get_cipher():
