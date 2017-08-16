@@ -1,4 +1,5 @@
 # Copyright 2017 Dhruv Mehta
+from shutil import copyfile
 
 def rot47(my_file, direction):
     """Executes the ROT47 cipher.
@@ -28,6 +29,8 @@ def rot47(my_file, direction):
                         n -= 94
                     c = chr(n)
                 o.write(c)
+
+    copyfile(output, ".chain")
 
     if direction is 1:
         print("Encryption complete!")

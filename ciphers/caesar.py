@@ -1,4 +1,5 @@
 # Copyright 2017 Dhruv Mehta
+from shutil import copyfile
 
 def get_key():
     """Get the numerical key for the Caesar Cipher.
@@ -53,6 +54,8 @@ def caesar(my_file, direction, key):
                         n += 94
                     c = chr(n)
                 o.write(c)
+
+    copyfile(output, ".chain")
 
     if direction is 1:
         print("Encryption complete!")

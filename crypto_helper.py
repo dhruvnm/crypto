@@ -1,10 +1,12 @@
 # Copyright 2017 Dhruv Mehta
 from pathlib import Path
 import sys
+from os import remove
 
 def exit():
     """Exit the program"""
     print("Goodbye!")
+    remove(".chain")
     sys.exit()
 
 def get_cipher():
@@ -62,9 +64,12 @@ def get_file():
         The file path the user provided.
     """
     while True:
-        my_file = input("Enter the path for your file (0 to quit): ")
+        print("Enter the path for your file or enter 0 to quit.")
+        my_file = input("You can also just press enter to chain the previous output: ")
         if my_file is '0':
             exit()
+        elif my_file is '':
+            my_file = ".chain"
 
         path = Path(my_file)
         if path.is_file():
