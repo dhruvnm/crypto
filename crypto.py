@@ -1,5 +1,6 @@
 # Copyright 2017 Dhruv Mehta
 import crypto_helper as cry
+import rot
 
 print("Welcome to Cryto v1.0")
 
@@ -10,3 +11,4 @@ while True:
 
     if cipher is 1:
         #Handle ROT47
+        rot.rot47(my_file, direction)
