@@ -1,6 +1,6 @@
 # Copyright 2017 Dhruv Mehta
 import crypto_helper as cry
-import rot
+from ciphers import rot
 
 print("Welcome to Cryto v1.0")
 
