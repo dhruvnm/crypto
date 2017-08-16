@@ -17,3 +17,10 @@ while True:
         #Handle Caesar Cipher
         key = caesar.get_key()
         caesar.caesar(my_file, direction, key)
+
+    elif cipher is 3:
+        #Handle Columnar Transposition
+        key = column.get_key()
+        pad = column.get_pad()
+        if direction is 1:
+            column.encrypt(my_file, key, pad)

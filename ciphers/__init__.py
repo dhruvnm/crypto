@@ -1,3 +1,3 @@
 # Copyright 2017 Dhruv Mehta
 
-__all__ = ["rot", "caesar"]
+__all__ = ["rot", "caesar", "column"]

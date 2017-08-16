@@ -24,11 +24,12 @@ def get_cipher():
         print("(0) Quit")
         print("(1) ROT47")
         print("(2) Caesar Cipher")
+        print("(3) Columnar Transposition")
         try:
             choice = int(input("Please choose a cipher: "))
         except ValueError:
             choice = -1
-        if choice < 0 or choice > 2:
+        if choice < 0 or choice > 3:
             print("Invalid option. Try again.")
         elif choice is 0:
             exit()
