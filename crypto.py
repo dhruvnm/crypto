@@ -1,5 +1,5 @@
 # Copyright 2017 Dhruv Mehta
-import crypto_helper as cry
+import helper as cry
 from ciphers import *
 
 print("Welcome to Cryto v1.0")
