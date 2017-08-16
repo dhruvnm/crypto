@@ -12,3 +12,6 @@ while True:
     if cipher is 1:
         #Handle ROT47
         rot.rot47(my_file, direction)
+
+#    elif cipher is 2:
+        #Handle Caesar Cipher
