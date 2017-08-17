@@ -21,6 +21,8 @@ while True:
     elif cipher is 3:
         #Handle Columnar Transposition
         key = column.get_key()
-        pad = column.get_pad()
         if direction is 1:
+            pad = column.get_pad()
             column.encrypt(my_file, key, pad)
+        else:
+            column.decrypt(my_file, key)
