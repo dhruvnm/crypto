@@ -42,3 +42,7 @@ python3 crypto.py
     asuxyeDx  hxMm vnirx
     ```
     Decryption occurs by reversing the process
+
+4. Substitution Cipher
+
+    TODO

@@ -2,7 +2,7 @@
 import helper as cry
 from ciphers import *
 
-print("Welcome to Cryto v1.0")
+print("Welcome to crypto")
 
 while True:
     cipher = cry.get_cipher()
