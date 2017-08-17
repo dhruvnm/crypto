@@ -17,4 +17,28 @@ python3 crypto.py
 
 2. Caesar Cipher
 
-    The Caesar Cipher takes every character as ASCII and shifts its value by the designated key. To decrypt, it will shift in the opposite direction. 
+    The Caesar Cipher takes every character as ASCII and shifts its value by the designated key. To decrypt, it will shift in the opposite direction.
+
+3. Columnar Transposition
+
+    Columnar Transposition involves placing every letter of the key as the top row of a matrix and then filling the rest of the matrix with the rest of the message. For example for the message `My name is Dhruv`, the key `mehta`, and the pad character `x` it would look like the following:
+    ```
+    m|e|h|t|a
+    M|y| |n|a
+    m|e| |i|s
+     |D|h|r|u
+    v|x|x|x|x
+    ```
+    Notice that the pad character is used to complete the matrix. The columns are then reordered to be in order of lowest ASCII value to largest.
+    ```
+    a|e|h|m|t
+    a|y| |M|n
+    s|e| |m|i
+    u|D|h| |r
+    x|x|x|v|x
+    ```
+    Finally the values are read off the columns to get a final ciphertext of:
+    ```
+    asuxyeDx  hxMm vnirx
+    ```
+    Decryption occurs by reversing the process
