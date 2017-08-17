@@ -1,7 +1,7 @@
 # crypto
 
 ## Overview
-A program that allows you to encrypt and decrypt messages with various different ciphers
+A program that allows you to encrypt and decrypt messages with various different ciphers. Inspiration from practicalcryptography.com
 
 ## Run crypto
 To run crypto make sure you have the latest version of Python 3.
