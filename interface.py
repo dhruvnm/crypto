@@ -1,15 +1,10 @@
 # Copyright 2017 Dhruv Mehta
 from pathlib import Path
 import sys
-from os import remove
 
 def exit():
     """Exit the program"""
     print("Goodbye!")
-    try:
-        remove(".chain")
-    except FileNotFoundError:
-        pass
     sys.exit()
 
 def get_cipher():
@@ -59,21 +54,27 @@ def get_direction():
         else:
             return choice
 
-def get_file():
+def get_file(active):
     """Get the file the program will work on.
+
+    Parameters
+    ----------
+    active : bool
+        Determines whether there is an active file or not.
 
     Returns
     -------
     str
         The file path the user provided.
+        None will be returned if chaining the previous output.
     """
     while True:
         print("Enter the path for your file or enter 0 to quit.")
         my_file = input("You can also just press enter to chain the previous output: ")
         if my_file is '0':
             exit()
-        elif my_file is '':
-            my_file = ".chain"
+        elif my_file is '' and active:
+            return None
 
         path = Path(my_file)
         if path.is_file():
@@ -81,7 +82,7 @@ def get_file():
         else:
             print("That isn't a file. Try again.")
 
-def int_key():
+def get_int_key():
     """Get a numerical key.
 
     Returns
@@ -99,7 +100,7 @@ def int_key():
 
     return key
 
-def unique_str_key():
+def get_unique_str_key():
     """Get a key with unique ASCII values.
 
     Returns
@@ -125,7 +126,7 @@ def unique_str_key():
             print("The key must be at least one character.")
     return key
 
-def pad():
+def get_pad():
     """Get a pad character.
 
     Returns
