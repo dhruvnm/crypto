@@ -18,6 +18,8 @@ class Text:
         for c in r:
             self.text.append(c)
 
+        self.file_name = source
+
 
     def record(self, destination):
         """Record data stored in this object in a file.

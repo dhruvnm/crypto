@@ -35,13 +35,14 @@ while True:
         if direction is 1:
             key.append(interface.get_pad())
 
+    s = '.'
     if direction is 1:
         method.encrypt(text, key)
-        text.record("ciphertext")
+        text.record(s.join([text.file_name, "cipher"]))
         print("Encryption complete!")
-        print("Look at ciphertext for the results.")
+        print("Look at " + text.file_name + ".cipher for the results.")
     else:
         method.decrypt(text, key)
-        text.record("plaintext")
+        text.record(s.join([text.file_name, "plain"]))
         print("Decryption complete!")
-        print("Look at plaintext for the results.")
+        print("Look at " + text.file_name + ".plain for the results.")
