@@ -1,28 +1,38 @@
 # Copyright 2017 Dhruv Mehta
-import helper as cry
-from ciphers import *
+import interface
+from text import Text
+from ciphers.rot import ROT47
+from ciphers.caesar import Caesar
+from ciphers.column import Column
 
 print("Welcome to crypto")
 
 while True:
-    cipher = cry.get_cipher()
-    direction = cry.get_direction()
-    my_file = cry.get_file()
+    cipher = interface.get_cipher()
+    direction = interface.get_direction()
+    my_file = interface.get_file()
+    text = Text(my_file)
 
     if cipher is 1:
         #Handle ROT47
-        rot.rot47(my_file, direction)
+        method = ROT47()
+        key = None
 
     elif cipher is 2:
         #Handle Caesar Cipher
-        key = caesar.get_key()
-        caesar.caesar(my_file, direction, key)
+        method = Caesar()
+        key = [interface.int_key()]
 
     elif cipher is 3:
         #Handle Columnar Transposition
-        key = column.get_key()
+        method = Column()
+        key = [interface.unique_str_key()]
         if direction is 1:
-            pad = column.get_pad()
-            column.encrypt(my_file, key, pad)
-        else:
-            column.decrypt(my_file, key)
+            key.append(interface.pad())
+
+    if direction is 1:
+        method.encrypt(text, key)
+        text.record("ciphertext")
+    else:
+        method.decrypt(text, key)
+        text.record("plaintext")

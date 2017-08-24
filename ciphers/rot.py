@@ -1,27 +1,47 @@
 # Copyright 2017 Dhruv Mehta
+from .cipher import Cipher
 
-def rot47(my_file, direction):
-    if direction is 1:
-        output = "ciphertext"
-    else:
-        output = "plaintext"
+class ROT47(Cipher):
+    """A class used to encrypt messages with the ROT47 Cipher."""
+    def encrypt(self, plaintext, key):
+        """Encrypt the plaintext with ROT47.
 
-    with open(my_file, "r") as f:
-        with open(output, "w") as o:
-            while True:
-                c = f.read(1)
-                if not c:
-                    break
-                n = ord(c)
-                if n in range(33, 127):
-                    n += 47
-                    if n > 126:
-                        n -= 94
-                    c = chr(n)
-                o.write(c)
+        Parameters
+        ----------
+        plaintext : Text
+            The message to be encrypted.
+        key : list
+            Not needed for this cipher. Just pass None.
+        """
+        self._rot47(plaintext)
 
-    if direction is 1:
-        print("Encryption complete!")
-    else:
-        print("Decryption complete!")
-    print("Check " + output + " for the result")
+
+    def decrypt(self, ciphertext, key):
+        """Decrypt the ciphertext with ROT47
+
+        Parameters
+        ----------
+        ciphertext : str
+            The message to be decrypted.
+        key : list
+            Not needed for this cipher. Just pass None.
+        """
+        self._rot47(ciphertext)
+
+    def _rot47(self, text):
+        """The ROT47 Cipher algorithm.
+
+        Parameters
+        ----------
+        text : Text
+            The plaintext or ciphertext.
+        """
+        i = 0
+        while i < len(text.text):
+            n = ord(text.text[i])
+            if 33 <= n <= 126:
+                n += 47
+                if n > 126:
+                    n -= 94
+            text.text[i] = chr(n)
+            i += 1

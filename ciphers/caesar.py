@@ -1,64 +1,43 @@
 # Copyright 2017 Dhruv Mehta
-from shutil import copyfile
+from .cipher import Cipher
 
-def get_key():
-    """Get the numerical key for the Caesar Cipher.
+class Caesar(Cipher):
+    """A class used to encrypt messages with the Caesar Cipher."""
+    def encrypt(self, plaintext, key):
+        """Encrypt the plaintext with the Caesar cipher.
 
-    Returns
-    -------
-    int
-        The key value.
-    """
-    while True:
-        try:
-            key = int(input("Enter an integer key value: "))
-            break
-        except ValueError:
-            print("Invalid option. Try again.")
+        Parameters
+        ----------
+        plaintext : Text
+            The message to be encrypted
+        key : list
+            Should be a list containing one element:
+                (0) An integer.
+        """
+        self._caesar(plaintext, int(key[0]))
 
-    return key
+    def decrypt(self, ciphertext, key):
+        """Decrypt the ciphertext with the Caesar cipher.
 
+        Parameters
+        ----------
+        ciphertext : Text
+            The message to be decrypted.
+        key : list
+            Should be a list containing one element:
+                (0) An integer.
+        """
+        self._caesar(ciphertext, -int(key[0]))
 
-def caesar(my_file, direction, key):
-    """Executes the Caesar Cipher.
-
-    Parameters
-    ----------
-    my_file : str
-        The file path for the source file.
-    direction : int
-        A variable that tells if the program should encrypt(1) or decrypt(2).
-    key : int
-        The encryption/decryption key
-    """
-    if direction is 1:
-        output = "ciphertext"
-    else:
-        output = "plaintext"
-
-    if direction is 2:
-        key = -key
-
-    with open(my_file, "r") as f:
-        with open(output, "w") as o:
-            while True:
-                c = f.read(1)
-                if not c:
-                    break
-                n = ord(c)
-                if 33 <= n <= 126:
-                    n += key
-                    while n > 126:
-                        n -= 94
-                    while n < 33:
-                        n += 94
-                    c = chr(n)
-                o.write(c)
-
-    copyfile(output, ".chain")
-
-    if direction is 1:
-        print("Encryption complete!")
-    else:
-        print("Decryption complete!")
-    print("Check " + output + " for the result")
+    def _caesar(self, text, key):
+        i = 0
+        while i < len(text.text):
+            n = ord(text.text[i])
+            if 33 <= n <= 126:
+                n += key
+                while n > 126:
+                    n -= 94
+                while n < 33:
+                    n += 94
+            text.text[i] = chr(n)
+            i += 1

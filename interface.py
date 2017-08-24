@@ -80,3 +80,63 @@ def get_file():
             return my_file
         else:
             print("That isn't a file. Try again.")
+
+def int_key():
+    """Get a numerical key.
+
+    Returns
+    -------
+    str
+        The key value.
+    """
+    while True:
+        key = input("Enter an integer key value: ")
+        try:
+            key = int(key)
+            break
+        except ValueError:
+            print("Invalid option. Try again.")
+
+    return key
+
+def unique_str_key():
+    """Get a key with unique ASCII values.
+
+    Returns
+    -------
+    str
+        The key value.
+    """
+    while True:
+        key = input("Enter a key phrase: ")
+        if len(key) > 0:
+            i = 1
+            t = True
+            key_alpha = sorted(key)
+            while i < len(key):
+                if key_alpha[i] is key_alpha[i - 1]:
+                    print("Your key cannot repeat ASCII characters")
+                    t = False
+                    break
+                i += 1
+            if t:
+                break
+        else:
+            print("The key must be at least one character.")
+    return key
+
+def pad():
+    """Get a pad character.
+
+    Returns
+    -------
+    chr
+        The pad character.
+    """
+    while True:
+        pad = input("Enter a pad character: ")
+        if len(pad) == 1:
+            break
+        else:
+            print("The pad must be one character.")
+    return pad
