@@ -45,4 +45,26 @@ python3 crypto.py
 
 4. Substitution Cipher
 
-    TODO
+    The Substitution Cipher replaces characters in your file in a one to one manner based on two lines in a key file. It is important to provide enough characters on the two lines for the cipher to be reversible. If you encrypt `a` with `h`, then `h` must also be encrypted because otherwise your file could be corrupted during decryption. For example:
+
+    Your plaintext is:
+    ```
+    hello
+    ```
+
+    Your keyfile is:
+    ```
+    h
+    l
+    ```
+
+    Upon encryption your ciphertext would be:
+    ```
+    lello
+    ```
+
+    If you decrypt, you get the corrupted plaintext of:
+    ```
+    hehho
+    ```
+    

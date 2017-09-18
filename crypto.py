@@ -4,6 +4,7 @@ from text import Text
 from ciphers.rot import ROT47
 from ciphers.caesar import Caesar
 from ciphers.column import Column
+from ciphers.sub import Sub
 
 print("Welcome to crypto")
 
@@ -34,6 +35,18 @@ while True:
         key = [interface.get_unique_str_key()]
         if direction is 1:
             key.append(interface.get_pad())
+
+    elif cipher is 4:
+        # Handle Substitution Cipher
+        method = Sub()
+        key = interface.get_key_file()
+        
+        if method.check_key(key) is False:
+            print("Your key is invalid. Make sure your key two lines of equal length")
+            continue
+        else:
+            print("NOTE: If your key doesn't cover sufficient characters, your message might be corrupted")
+
 
     s = '.'
     if direction is 1:

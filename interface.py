@@ -20,11 +20,12 @@ def get_cipher():
         print("(1) ROT47")
         print("(2) Caesar Cipher")
         print("(3) Columnar Transposition")
+        print("(4) Substitution Cipher")
         try:
             choice = int(input("Please choose a cipher: "))
         except ValueError:
             choice = -1
-        if choice < 0 or choice > 3:
+        if choice < 0 or choice > 4:
             print("Invalid option. Try again.")
         elif choice is 0:
             exit()
@@ -141,3 +142,24 @@ def get_pad():
         else:
             print("The pad must be one character.")
     return pad
+
+def get_key_file():
+    """Gets a key from a file.
+
+    Returns
+    -------
+    list
+        A list with each element being a line in the key file.
+    """
+    while True:
+        name = input("Enter the name of the file with your key: ")
+        path = Path(name)
+        if path.is_file():
+            break
+        else:
+            print("That isn't a file. Try again.")
+
+    with open(name, 'r') as f:
+        key = f.readlines()
+
+    return key
