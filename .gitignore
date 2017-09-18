@@ -4,3 +4,4 @@ ciphertext*
 *.pyc
 *.plain
 *.cipher
+*.txt
